@@ -6,7 +6,7 @@
 #
 # ---
 
-def factorial(n):
+def factorial(n: int) -> float:
     result = 1
     for i in range(1, n + 1):
         result *= i

@@ -26,8 +26,8 @@ def count_char(string: str) -> int:
     else:
         count = 0
         for char in string:
-            if char.isdigit():
-                count += 1
+            count += 1
+        return count
 
 
 

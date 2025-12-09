@@ -57,10 +57,12 @@ def back_day(day: int, month: int, year: int):
     else:
         return 31, 12, year - 1
 
-def valid_date(day, month, year):
+def valid_date(day: int, month: int, year: int) -> bool:
     if month < 1 or month > 12:
         return False
     if day < 1 or day > day_in_month[month]:
+        return False
+    if year < 1 :
         return False
     return True
 

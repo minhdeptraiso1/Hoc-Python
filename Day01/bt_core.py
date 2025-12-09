@@ -1,3 +1,38 @@
+#tinh tong 1 den n
+def sum_to_n(n: int) -> int:
+    sum = 0
+    for i in range(1, n + 1):
+        sum += i
+    return sum
+
+n = int(input("nhap n"))
+if n > 0:
+    print("Tong sum =", sum_to_n(n))
+else:
+    print("so n khong hop le")
+
+#kiem tra nam nhuan
+def check_is_leap_year(year: int) -> bool:
+    if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
+        return True
+    else:
+        return False
+
+#dem ky tu
+def count_char(string: str) -> int:
+    string = string.lower().strip()
+    if string == "":
+        return 0
+    else:
+        count = 0
+        for char in string:
+            if char.isdigit():
+                count += 1
+
+
+
+
+
 # ham`
 def say_bye(name: str) -> str:
    # print("Bye", x)

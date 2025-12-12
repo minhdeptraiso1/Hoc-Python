@@ -26,7 +26,7 @@ def print_students(list_of_students: list[tuple[str, str, int]]) -> None:
 print_students(students)
 
 #b. Tạo một list mới python_scores chỉ chứa tuple (student_id, name, python_score)
-def create_python_scores(students_list: list[tuple[str, str, int]],
+def create_python_scores(students_list: list[tuple[str, str, float]],
                          scores_dict: dict) -> list[tuple[str, str, float]]:
     python_scores = []
     for student_id, name, age in students_list:

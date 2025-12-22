@@ -3,7 +3,7 @@ from schemas.todo_schema.todo_create import TodoCreate
 from schemas.todo_schema.todo_out import TodoOut
 from schemas.todo_schema.todo_search import SearchTodo
 from schemas.todo_schema.todo_update import TodoUpdate
-from ultils.todo_ultils import exists_title, id_is_exists, check_priority_in_1_to_5
+from ultils.todo_ultils import exists_title, id_is_exists
 
 _todos: list[Task] = []
 _id_counter = 1
@@ -12,7 +12,6 @@ _id_counter = 1
 def create_todo(todo: TodoCreate) -> TodoOut:
     global _id_counter
     exists_title(todo.title, _todos)
-    check_priority_in_1_to_5(todo.priority)
     # stored_todo = {
     #     "id": _id_counter,
     #     "title": todo.title,
@@ -43,7 +42,6 @@ def update_todo_patch(id: int, todo: TodoUpdate) -> TodoOut:
         item.description = todo.description
 
     if todo.priority is not None:
-        check_priority_in_1_to_5(todo.priority)
         item.priority = todo.priority
 
     if todo.done is not None:
@@ -54,14 +52,12 @@ def update_todo_patch(id: int, todo: TodoUpdate) -> TodoOut:
 
 def update_todo_put(id: int, todo: TodoCreate) -> TodoOut:
     item = id_is_exists(id, _todos)
+    exists_title(item.title, _todos, exclude_id=id)
 
     item.title = todo.title
     item.description = todo.description
     item.priority = todo.priority
     item.done = todo.done
-
-    exists_title(item.title, _todos, exclude_id=id)
-    check_priority_in_1_to_5(item.priority)
 
     return TodoOut.model_validate(item)
 

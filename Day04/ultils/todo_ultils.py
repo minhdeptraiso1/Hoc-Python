@@ -23,23 +23,6 @@ def exists_title(title: str, _todos: List[Task], exclude_id: Optional[int] = Non
                 raise HTTPException(status_code=409, detail="Title already exists")
 
 
-def check_priority_in_1_to_5(priority: int) -> None:
-    """
-    Kiểm tra priority có nằm trong khoảng ràng buộc 1 đến 5 hay không.
-
-    Args:
-        priority (int): số priority người dùng nhập vào
-
-    Raises:
-        HTTPException: status 400 nếu priority > 5 hoặc priority < 1
-    """
-    if not 1 <= priority <= 5:
-        raise HTTPException(
-            status_code=400,
-            detail="Priority must be between 1 and 5"
-        )
-
-
 def id_is_exists(id: int, _todos: list[Task]) -> Task:
     """
     Kiểm tra id có tồn tại trong _todos hay chưa và lấy ra todo.
